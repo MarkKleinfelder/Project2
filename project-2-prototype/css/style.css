@@ -1,0 +1,31 @@
+.title{
+	text-align: center;
+}
+
+.row1{
+	background-image: url("images/wheel.jpg");
+	background: lightblue;
+	
+}
+.row2{
+	text-align: center;
+
+}
+
+
+.fblogin{
+	width:200px;
+}
+
+.row3{
+	text-align: center;
+}
+
+.row4{
+	text-align: center;
+}
+
+.customType{
+	height:10em;
+
+}

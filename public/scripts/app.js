@@ -1,14 +1,23 @@
-$(document).ready(function(){
-	console.log("JS is running!");
-});
 
 
 
-		var angerLevel;
-		var disgustLevel;
-		var fearLevel;
-		var joyLevel;
-		var sadnessLevel;
+
+
+
+
+/////////////////////////////
+//                         //
+//   **API APP BELOW**     //
+//                         //
+//                         //
+/////////////////////////////
+
+
+var angerLevel;
+var disgustLevel;
+var fearLevel;
+var joyLevel;
+var sadnessLevel;
 
 
 var submitText = function(){
@@ -25,26 +34,32 @@ var submitText = function(){
 		joyLevel = tones[3].score *100;
 		sadnessLevel = tones[4].score *10;
 		graphResults();
-	}
-
+	  }
   })
-	 
 }
 
 function graphResults() {
     var chart = new CanvasJS.Chart("chartContainer",
+    	
     {
+      backgroundColor: "transparent",
       title:{
         text: "Emotions"    
       },
+    
       animationEnabled: true,
       axisY: {
         title: ""
       },
       legend: {
+      	
+      	fontFamily: "Gruppo", //******font for legend(bottom)******//
         verticalAlign: "bottom",
         horizontalAlign: "center"
       },
+
+      
+
       theme: "theme2",
       data: [
 
@@ -63,9 +78,8 @@ function graphResults() {
       }   
       ]
     });
-
-    chart.render();
-  }
+     chart.render();
+}
 
 // var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 // var tone_analyzer = new ToneAnalyzerV3({
@@ -81,3 +95,8 @@ function graphResults() {
 //     else
 //       console.log(JSON.stringify(tone, null, 2));
 // });
+
+
+
+
+//app.listen(3000);

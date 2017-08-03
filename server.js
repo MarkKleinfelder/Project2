@@ -1,11 +1,63 @@
-var express = require('express'),
-    app = express();
 
-var bodyParser = require('body-parser');
+var request      = require('request');
+var express      = require('express');
+var app          = express();
+var mongoose     = require('mongoose');
+var passport     = require('passport');
+var flash        = require('connect-flash');
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-var request = require('request');
+
+
+/////////////////////////
+//                     //
+// **PASSPORT BELOW**  //
+//                     //
+/////////////////////////                  
+
+mongoose.connect('mongodb://localhost/project2'); 
+
+app.use(morgan('dev')); 
+app.use(cookieParser());
+app.use(bodyParser()); 
+
+app.set('views', './views');
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+app.use(passport.initialize());
+app.use(passport.session()); 
+app.use(flash()); 
+
+require('./config/passport')(passport);
+
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+
+var routes = require('./config/routes');
+app.use(routes);
+
+
+
+
+
+
+
+
+
+
 
 /***********WATSON CLIENT LIBRARY**************/
 
@@ -36,14 +88,14 @@ var db = require('./models');
 
 
 /********ROUTS************/
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 
 
 /********HTML END POINTS**********/
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+// app.get('/', function homepage(req, res) {
+//   res.sendFile(__dirname + '/views/index.html');
+// });
 
 // app.get("https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?text="+$("#textToSubmit").val()+"&sentences=true&version=2016-05-19", function(req,res){
 //     console.log(res.body);
@@ -51,36 +103,6 @@ app.get('/', function homepage(req, res) {
 
 /************JSON API ENDPOINTS****************/
 
-// app.get('/api', function api_index(req, res) {
-
-//   res.json({ 
-//     message: "PROJECT 2 API!",
-//     documentation_url: "", 
-//     base_url: "https://*****.herokuapp.com/", // CHANGE ME
-//     endpoints: [
-//       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-//       {method: "GET", path: "/api/**", description: ""}, // CHANGE ME
-//       {method: "GET", path: "/api/**/", description: ""},
-//       {method: "POST", path: "/api/**", description: ""}, // CHANGE ME
-//       {method: "PUT", path: "/api/**", description: ""},
-//       {method: "DELETE", path: "/api/**", description: ""}
-//     ]
-//   })
-// });
-
-
-
-
-// app.get('/api/profile', function (req,res){
-//   res.json({
-//     name: "Mark",
-//     human: true,
-//     github: "https://github.com/MarkKleinfelder",
-//     profile_image:"https://avatars3.githubusercontent.com/u/27730336?v=4&u=114faacadfb0312481daa040892580aa1eb7cabc&s=400",
-//     current_city: "Denver",
-//     family: [{name: "David", relationship:"Brother", occupation: 'Police Officer'}, {name: "Steven", relationship: "Brother", occupation: "USMC"}]
-//   })
-// })
 // const apiUrl = "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&sentences=false";
 
 // request(apiUrl function(error, response, body){

@@ -1,10 +1,14 @@
 body{
 
 }
+.container{
+	background-color: lightblue;
+}
 .title{
 	font-family: "Shrikhand", sans-serif;
 	text-align: center;
 	font-size: 55px
+
 }
 
 .row1{
@@ -16,7 +20,6 @@ body{
 	text-align: center;
 
 }
-
 
 .fblogin{
 	width:200px;
@@ -35,6 +38,10 @@ body{
 .customType{
 	height:10em;
 
+}
+
+.row5{
+	padding-top: 5em;
 }
 
 .chart{

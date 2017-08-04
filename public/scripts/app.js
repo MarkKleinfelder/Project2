@@ -36,6 +36,10 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
 
 })
 
+$('#showHistory').on('click', function(event){ //gets results from db for display
+  $.get('http://localhost:3000/api/results')
+})
+
 
 
 /////////////////////////////

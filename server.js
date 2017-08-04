@@ -105,7 +105,7 @@ app.get('/api/users', function user_index(req, res){
  });
 });
 
-app.get('/api/users/results', function results_index(req, res){
+app.get('/api/results', function results_index(req, res){
   db.Result.find({},function(error, results){
     console.log(results);
     res.json(results);

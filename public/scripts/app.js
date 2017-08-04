@@ -6,11 +6,16 @@
 
 
 // ************ GLOBAL VARIABLES *********** //
+
+
+//-----graph-------//
 var angerLevel;
 var disgustLevel;
 var fearLevel;
 var joyLevel;
 var sadnessLevel;
+//----------------//
+var allResults;
 
 
 // ************** BUTTON FUNCTIONS ************ //
@@ -32,14 +37,27 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
       success: function(){
         console.log('successful ajax');
       }
+    })
 })
 
-})
+$('#showHistory').on('click', function(data){ //gets results from db for display
+ $.get("http://localhost:3000/api/results")
+    .done(function(data){  
+    let allResults = data;
+    console.log(allResults);
+    console.log(allResults.length);
+    allResults.forEach(function(result){
+      // $('#history').html("<a href='#'>" + result._id + "</a>");
+      renderResults(result);
+    });
+  });
+});
 
-$('#showHistory').on('click', function(event){ //gets results from db for display
-  $.get('http://localhost:3000/api/results')
-})
-
+function renderResults(result){
+  var historyHtml= 
+  "<a href='#' class='list-group-item'>" + result._id + "</a>" ;
+  $('#history').append(historyHtml)
+}
 
 
 /////////////////////////////
@@ -50,11 +68,11 @@ $('#showHistory').on('click', function(event){ //gets results from db for displa
 /////////////////////////////
 
 
-var angerLevel;
-var disgustLevel;
-var fearLevel;
-var joyLevel;
-var sadnessLevel;
+// var angerLevel;
+// var disgustLevel;
+// var fearLevel;
+// var joyLevel;
+// var sadnessLevel;
 
 
 var submitText = function(){
@@ -116,8 +134,6 @@ function graphResults() {
       ]
     });
      chart.render();
-     // saveResults();
-     // discardResults();
 }
 
 // var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');

@@ -10,5 +10,5 @@ mongoose.connect( process.env.MONGODB_URI ||
 
 
 
-//module.exports.Campsite = require("./campsite.js.example");
-//module.exports.Pet = require("./pets.js");
+module.exports.User = require("./user.js");
+module.exports.Result = require("./results.js");

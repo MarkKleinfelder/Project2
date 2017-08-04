@@ -33,7 +33,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+app.use(session({ secret: 'THIS IS THE APP' })); 
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 
@@ -86,13 +86,45 @@ var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var db = require('./models');
 
 
+/********JSON API END POINTS**********/
+app.get('/api', function api_index (req, res){
+  res.json({
+    message: "Welcome to tunely!",
+    documentation_url: "https://github.com/tgaff/tunely/api.md",
+    base_url: "http://tunely.herokuapp.com",
+    endpoints: [
+      {method: "GET", path: "/api", description: "Describes available endpoints"}
+    ]
+  });
+});
 
-/********ROUTS************/
-//app.use(express.static('public'));
+app.get('/api/users', function user_index(req, res){
+  	db.User.find({},function(error, users){
+    console.log(users);
+    res.json(users);
+ });
+});
+
+app.get('/api/users/results', function results_index(req, res){
+  db.Result.find({},function(error, results){
+    console.log(results);
+    res.json(results);
+ });
+});
+
+app.post('/api/results', function(req,res){
+
+	console.log('hit results');
+	db.Result.create(req.body, function(error, result){
+		console.log(result);
+		res.json(result);
+	});
+});
 
 
 
-/********HTML END POINTS**********/
+
+
 // app.get('/', function homepage(req, res) {
 //   res.sendFile(__dirname + '/views/index.html');
 // });
@@ -101,7 +133,6 @@ var db = require('./models');
 //     console.log(res.body);
 //   })
 
-/************JSON API ENDPOINTS****************/
 
 // const apiUrl = "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&sentences=false";
 

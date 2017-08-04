@@ -1,14 +1,47 @@
+////////////////////////////
+//                        //
+//   **FRONT END JS.**    //
+//                        //
+////////////////////////////
 
 
+// ************ GLOBAL VARIABLES *********** //
+var angerLevel;
+var disgustLevel;
+var fearLevel;
+var joyLevel;
+var sadnessLevel;
 
 
+// ************** BUTTON FUNCTIONS ************ //
+
+$('#saveResults').on('click', function (event){ // Saves results to user db
+    console.log("saveResults button clicked")
+
+    var resultsUrl="http://localhost:3000/api/results"
+    $.ajax({
+      method: "POST",
+      url: resultsUrl,
+      data: {
+        anger: angerLevel,
+        disgust: disgustLevel,
+        fear: fearLevel,
+        joy: joyLevel,
+        sadness: sadnessLevel
+      },
+      success: function(){
+        console.log('successful ajax');
+      }
+})
+
+})
 
 
 
 /////////////////////////////
 //                         //
 //   **API APP BELOW**     //
-//                         //
+//      (front-end js)     //
 //                         //
 /////////////////////////////
 
@@ -79,6 +112,8 @@ function graphResults() {
       ]
     });
      chart.render();
+     // saveResults();
+     // discardResults();
 }
 
 // var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');

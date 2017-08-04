@@ -31,4 +31,15 @@ router.route('/login')
 router.route("/logout")
   .get(usersController.getLogout)
 
+
+//////////////////////
+//                  //
+//                  //
+//  **MY ROUTES**   //
+//                  //
+//////////////////////
+
+router.route("/secret")
+  .post(usersController.postResults)  
+
 module.exports = router

@@ -44,12 +44,31 @@ function getLogout(request, response, next) {
 
 // Restricted page
 function secret(request, response){
-	response.json('welcome to super secret')
+	response.render('app.ejs')
 }
 
+////////////////////////
+//                    //
+//  **MY FUNCTIONS**  //
+//                    //
+//                    //
+////////////////////////
+
+//POST results
+function postResults(request, response){
+	console.log('results hit');
+    db.Result.create(req.body, function(error, result){
+      res.json(result);
+      console.log(result);
+    })
+}
+
+
+
 module.exports = {
+  postResults: postResults,
   getLogin: getLogin,
-  postLogin: postLogin ,
+  postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,

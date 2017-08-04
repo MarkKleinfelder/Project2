@@ -7,7 +7,8 @@ var ResultSchema = new Schema({
 	    disgust: Number,
 	    fear: Number,
  	    joy: Number,
-        sadness: Number
+        sadness: Number,
+        postTime: [String]
     })
 
 module.exports = mongoose.model('Result', ResultSchema)

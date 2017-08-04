@@ -59,16 +59,30 @@
     <div>
       <button type = 'button' id='showHistory' class='btn-primary'>See Past Results</button>
     </div>
+    
+<!--____________RESULTS HISTORY RENDER AREA______________-->
     <div class='list-group' id='history'>
-  <!--   <div class="btn-group">
-      <button type='button' class='btn btn-primary'>See History</button>
-      <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
-        <span class='caret' id='caretHistory'></span>
-      </button>
-      <ul class='dropdown-menu' id='history' role='menu'>
+    </div>
+    
+<!--_______________MODAL_________________________________-->
 
-      </ul>
-    </div> -->
+    <div class="modal fade" tableindex='-1' role='dialog' id='commentModal'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <button type='button' class='close' data-dismiss='modal' area-label="Close"><span aria-hidden='true'>&times;<span></button>
+            <h3 class='modal-title'>Comments</h3>
+          </div>
+          <div class='modal-body'>
+            <fieldset class="from-horizontal">
+            <!---_______text input___________-->
+              <div class="form-group">
+                <label class='col-md-4'>Comment</label>
+                <div class='col-md-4'>
+                <input id='resultComment' name='resultComment' type='text' placeholder='add a comment' class='form-control input-md'>
+                </div>
+              </div>
+            </fieldset>
     </div>
     </div>
   </div>

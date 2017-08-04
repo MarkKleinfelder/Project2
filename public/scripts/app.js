@@ -15,16 +15,19 @@ var fearLevel;
 var joyLevel;
 var sadnessLevel;
 //----------------//
-var allResults;
+
+var allResults; //list of objects in 'results' collection
 
 
 // ************** BUTTON FUNCTIONS ************ //
 
+
+//_________________save results to results collection____________//
 $('#saveResults').on('click', function (event){ // Saves results to user db
     console.log("saveResults button clicked")
-
+    var currentTime = new Date().toLocaleString().split(', '); //time stamp
     var resultsUrl="http://localhost:3000/api/results"
-    $.ajax({
+    $.ajax({              //ajax POST to db
       method: "POST",
       url: resultsUrl,
       data: {
@@ -32,7 +35,8 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
         disgust: disgustLevel,
         fear: fearLevel,
         joy: joyLevel,
-        sadness: sadnessLevel
+        sadness: sadnessLevel,
+        postTime: currentTime     //adds current-time timestamp
       },
       success: function(){
         console.log('successful ajax');
@@ -40,6 +44,8 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
     })
 })
 
+
+//_________get and show all objects in 'results' collection__________//
 $('#showHistory').on('click', function(data){ //gets results from db for display
  $.get("http://localhost:3000/api/results")
     .done(function(data){  
@@ -47,17 +53,26 @@ $('#showHistory').on('click', function(data){ //gets results from db for display
     console.log(allResults);
     console.log(allResults.length);
     allResults.forEach(function(result){
-      // $('#history').html("<a href='#'>" + result._id + "</a>");
-      renderResults(result);
+      renderResults(result);//triggers all results to render to page
     });
   });
 });
 
-function renderResults(result){
+function renderResults(result){ //renders all past results in HTML
   var historyHtml= 
-  "<a href='#' class='list-group-item'>" + result._id + "</a>" ;
+  "<a href='#' class='list-group-item'>" 
+  + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> </a>" ;
+  
   $('#history').append(historyHtml)
 }
+
+
+//______________________add comment to 'result' object___________//
+
+$('#commentButton').on('click', function(event){
+  
+})
+
 
 
 /////////////////////////////

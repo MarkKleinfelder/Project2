@@ -112,6 +112,14 @@ app.get('/api/results', function results_index(req, res){
  });
 });
 
+app.get('/api/results/:id', function(req,res){
+	db.Result.findOne({ _id:req.params.id
+		}, function(err,result){
+			res.json(result);
+		
+	})
+})
+
 app.post('/api/results', function(req,res){
 
 	console.log('hit results');
@@ -119,6 +127,18 @@ app.post('/api/results', function(req,res){
 		console.log(result);
 		res.json(result);
 	});
+});
+
+app.put('/api/results/:id', function(req,res){
+	console.log("PUT hit");
+	db.Result.findOne({
+		_id: req.params.id
+	}, function(error,res){
+		 res.comment.push({
+			comment:req.body.comment
+		 });
+		  result.save();
+		});
 });
 
 

@@ -64,8 +64,20 @@ function postResults(request, response){
 }
 
 
+//PUT results
+function putResults(request, response){
+	console.log('results hit');
+	db.Result.update(req.body, function(error, result){
+		console.log(result)
+		res.json(result);
+	})
+}
+
+
+
 
 module.exports = {
+  putResults: putResults,
   postResults: postResults,
   getLogin: getLogin,
   postLogin: postLogin,

@@ -60,19 +60,39 @@ $('#showHistory').on('click', function(data){ //gets results from db for display
 
 function renderResults(result){ //renders all past results in HTML
   var historyHtml= 
-  "<a href='#' class='list-group-item'>" 
+  "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
   + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> </a>" ;
   
   $('#history').append(historyHtml)
+
 }
 
 
 //______________________add comment to 'result' object___________//
+var commentBox;
 
-$('#commentButton').on('click', function(event){
+$('#history').on('click', '#commentButton', function(event){ //renders modal on page
+  console.log("comment button clicked");
+  var byId= $(this).parents('.oneResult').data('result-id');
+  console.log(byId);
+  $('#commentModal').modal();
+  console.log("comment modal front-end");
   
+  
+  $('#saveComment').on('click', function(event){
+  console.log('saveComment clicked');
+  commentBox = $('#resultComment').val();
+  var commentUrl = "http://localhost:3000/api/results/"+ byId + "";
+  console.log(commentUrl)
+  $.ajax({
+    method: "PUT",
+    url: commentUrl,
+    comment: commentBox
 })
+console.log(commentBox);
 
+  })
+})
 
 
 /////////////////////////////

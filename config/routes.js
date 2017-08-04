@@ -40,6 +40,7 @@ router.route("/logout")
 //////////////////////
 
 router.route("/secret")
-  .post(usersController.postResults)  
+  .post(usersController.postResults) 
+  .put(usersController.putResults)
 
 module.exports = router

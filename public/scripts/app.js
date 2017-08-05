@@ -65,7 +65,7 @@ function renderResults(allResults){ //renders results history in HTML
     allResults.forEach(function(result){
     historyHtml=
     "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
-    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> </a>" ;
+    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> <button class='bt-default' id='reRenderButton'>Re-Render</button></a>" ;
   
     $('#history').append(historyHtml)
     })
@@ -86,7 +86,7 @@ $('#history').on('click', '#commentButton', function(event){ //renders comment m
     .done(function(data){
       console.log(data);
       console.log(data.comment)
-      $('#resultComment').val(data.comment);  //render previous comment in comment box
+      $('#resultComment').val(data.comment);  //render current comment in comment box
     });
   
   
@@ -123,6 +123,21 @@ $('#history').on('click', '#deleteResultButton', function(event){
         })
 });
 
+//_________________re-render result__________________//
+$('#history').on('click', '#reRenderButton', function(event){
+  var byId= $(this).parents('.oneResult').data('result-id');
+  $.get("http://localhost:3000/api/results/"+byId+"") 
+    .done(function(data){
+      console.log(byId);
+      console.log(data);
+      angerLevel = data.anger;
+      disgustLevel = data.disgust;
+      fearLevel = data.fear;
+      joyLevel = data.joy;
+      sadnessLevel = data.sadness;
+      graphResults();
+    })
+ });
 
 
 /////////////////////////////
@@ -145,7 +160,7 @@ var submitText = function(){
 		disgustLevel=tones[1].score *100;
 		fearLevel = tones[2].score *100;
 		joyLevel = tones[3].score *100;
-		sadnessLevel = tones[4].score *10;
+		sadnessLevel = tones[4].score *100;
 		graphResults();
 	  }
   })

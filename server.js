@@ -87,17 +87,21 @@ var db = require('./models');
 
 
 /********JSON API END POINTS**********/
+
+
 app.get('/api', function api_index (req, res){
   res.json({
-    message: "Welcome to tunely!",
-    documentation_url: "https://github.com/tgaff/tunely/api.md",
-    base_url: "http://tunely.herokuapp.com",
+    message: "Welcome to Mark Kleinfelder's Project 2",
+    documentation_url: "",
+    base_url: "",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"}
     ]
   });
 });
 
+
+//____________get all users___________//
 app.get('/api/users', function user_index(req, res){
   	db.User.find({},function(error, users){
     console.log(users);
@@ -105,6 +109,7 @@ app.get('/api/users', function user_index(req, res){
  });
 });
 
+//______________get all results____________//
 app.get('/api/results', function results_index(req, res){
   db.Result.find({},function(error, results){
     console.log(results);
@@ -112,14 +117,15 @@ app.get('/api/results', function results_index(req, res){
  });
 });
 
+//_______________get results by id_________//
 app.get('/api/results/:id', function(req,res){
-	db.Result.findOne({ _id:req.params.id
-		}, function(err,result){
-			res.json(result);
-		
-	})
+  db.Result.findOne({ _id:req.params.id
+	}, function(err,result){
+	  res.json(result);
+  })
 })
 
+//____________create NEW result object____//
 app.post('/api/results', function(req,res){
     console.log('hit results');
 	db.Result.create(req.body, function(error, result){
@@ -128,6 +134,7 @@ app.post('/api/results', function(req,res){
 	});
 });
 
+//_______update result with comment__//
 app.put('/api/results/:id', function(req,res){
 	console.log("PUT hit");
 	console.log(req.params.id);
@@ -140,21 +147,9 @@ app.put('/api/results/:id', function(req,res){
        res.json(result);
       });
     });
- 
-	// db.Result.update({id:req.params.id}, req.body, function(err, result){
-	// 	console.log("server put req.body.comment: "+ req.body.comment);
-	// 	console.log("server put update arg: " + result)
-	// 	if(err){
-	// 		console.log("PUT error: " + err);
-	// 	}else{
-	// 		console.log(result);
-	// 		result.save();
-	// 		res.json(result);
-	// 	};
-	// });
 
  
-
+//______________delete result by id_____//
 app.delete('/api/results/:id', function(req,res){
 	console.log("DELETE hit");
 	console.log(req.params.id);

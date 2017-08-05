@@ -57,7 +57,7 @@ $('#showHistory').on('click', function(data){ //gets results from db for display
   });
 
 
-function renderResults(allResults){ //renders all past results in HTML
+function renderResults(allResults){ //renders results history in HTML
   $('#history').html('');
   $.get("http://localhost:3000/api/results")
     .done(function(data){  
@@ -82,9 +82,15 @@ $('#history').on('click', '#commentButton', function(event){ //renders comment m
   $('#commentModal').data(byId);
   $('#commentModal').modal();
   console.log("comment modal front-end");
+  $.get("http://localhost:3000/api/results/"+byId+"") //get comment text from db
+    .done(function(data){
+      console.log(data);
+      console.log(data.comment)
+      $('#resultComment').val(data.comment);  //render previous comment in comment box
+    });
   
   
-    $('#saveComment').on('click', function(event){
+    $('#saveComment').on('click', function(event){  //saves comment to db
     console.log('saveComment clicked');
     var commentBox = $('#resultComment').val();
     var clickedUrl = "http://localhost:3000/api/results/"+ byId + "";
@@ -121,17 +127,10 @@ $('#history').on('click', '#deleteResultButton', function(event){
 
 /////////////////////////////
 //                         //
-//   **API APP BELOW**     //
-//      (front-end js)     //
+//   **WATSON API BELOW**  //
+//                         //
 //                         //
 /////////////////////////////
-
-
-// var angerLevel;
-// var disgustLevel;
-// var fearLevel;
-// var joyLevel;
-// var sadnessLevel;
 
 
 var submitText = function(){

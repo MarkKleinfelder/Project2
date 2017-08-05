@@ -35,11 +35,11 @@ router.route("/logout")
 //////////////////////
 //                  //
 //                  //
-//  **MY ROUTES**   //
+//  **ROUTES**      //
 //                  //
 //////////////////////
 
-router.route("/secret")
+//router.route("/secret")
   //.post(usersController.postResults) 
   //.put(usersController.putResults)
 

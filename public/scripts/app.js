@@ -58,6 +58,7 @@ $('#showHistory').on('click', function(data){ //gets results from db for display
 
 
 function renderResults(allResults){ //renders results history in HTML
+  console.log('renderResults function  hit');
   $('#history').html('');
   $.get("http://localhost:3000/api/results")
     .done(function(data){  
@@ -74,10 +75,10 @@ function renderResults(allResults){ //renders results history in HTML
 
 
 //______________________add comment to 'result' object___________//
-
+var byId;
 $('#history').on('click', '#commentButton', function(event){ //renders comment modal on page
   console.log("comment button clicked");
-  var byId= $(this).parents('.oneResult').data('result-id');
+  byId= $(this).parents('.oneResult').data('result-id');
   console.log(byId);
   $('#commentModal').data(byId);
   $('#commentModal').modal();
@@ -88,9 +89,9 @@ $('#history').on('click', '#commentButton', function(event){ //renders comment m
       console.log(data.comment)
       $('#resultComment').val(data.comment);  //render current comment in comment box
     });
+  });
   
-  
-    $('#saveComment').on('click', function(event){  //saves comment to db
+    $('#commentModal').on('click','#saveComment', function(event){  //saves comment to db
     console.log('saveComment clicked');
     var commentBox = $('#resultComment').val();
     var clickedUrl = "http://localhost:3000/api/results/"+ byId + "";
@@ -99,12 +100,18 @@ $('#history').on('click', '#commentButton', function(event){ //renders comment m
         method: "PUT",
         url: clickedUrl,
         data:{
-          comment: commentBox
+          comment: commentBox,
+          },
+        success:function(results){
+          console.log("ajax PUT save comment SUCCESS!");
+          $("#commentModal").modal('hide');
+          $("#resultComment").val('');
+          renderResults(results);
         }
       })
-  console.log(commentBox);
+      
     });
-});
+
 
 //_________________delete result object______________//
 
@@ -123,7 +130,7 @@ $('#history').on('click', '#deleteResultButton', function(event){
         })
 });
 
-//_________________re-render result__________________//
+//_________________re-GRAPH result __________________//
 $('#history').on('click', '#reRenderButton', function(event){
   var byId= $(this).parents('.oneResult').data('result-id');
   $.get("http://localhost:3000/api/results/"+byId+"") 

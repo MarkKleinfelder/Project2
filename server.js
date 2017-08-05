@@ -139,11 +139,12 @@ app.put('/api/results/:id', function(req,res){
 	console.log("PUT hit");
 	console.log(req.params.id);
     db.Result.findOneAndUpdate({_id: req.params.id},
-   	{$set:{comment:req.body.comment}}, {new: true},
+   	{$set:{comment:req.body.comment}}, {new: false},
   	  function (err,result){
       if(err){
       	console.log("PUT error");
       }
+       console.log("back-end PUT good")
        res.json(result);
       });
     });

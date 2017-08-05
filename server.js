@@ -121,8 +121,7 @@ app.get('/api/results/:id', function(req,res){
 })
 
 app.post('/api/results', function(req,res){
-
-	console.log('hit results');
+    console.log('hit results');
 	db.Result.create(req.body, function(error, result){
 		console.log(result);
 		res.json(result);
@@ -131,17 +130,42 @@ app.post('/api/results', function(req,res){
 
 app.put('/api/results/:id', function(req,res){
 	console.log("PUT hit");
-	db.Result.findOne({
-		_id: req.params.id
-	}, function(error,res){
-		 res.comment.push({
-			comment:req.body.comment
-		 });
-		  result.save();
-		});
+	console.log(req.params.id);
+    db.Result.findOneAndUpdate({_id: req.params.id},
+   	{$set:{comment:req.body.comment}}, {new: true},
+  	  function (err,result){
+      if(err){
+      	console.log("PUT error");
+      }
+       res.json(result);
+      });
+    });
+ 
+	// db.Result.update({id:req.params.id}, req.body, function(err, result){
+	// 	console.log("server put req.body.comment: "+ req.body.comment);
+	// 	console.log("server put update arg: " + result)
+	// 	if(err){
+	// 		console.log("PUT error: " + err);
+	// 	}else{
+	// 		console.log(result);
+	// 		result.save();
+	// 		res.json(result);
+	// 	};
+	// });
+
+ 
+
+app.delete('/api/results/:id', function(req,res){
+	console.log("DELETE hit");
+	console.log(req.params.id);
+	db.Result.findOneAndRemove({_id: req.params.id}, function(err,deleted){
+		if(err){
+			console.log(err);
+		}else{
+			res.json(deleted);
+		};
+	});
 });
-
-
 
 
 

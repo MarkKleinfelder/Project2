@@ -55,30 +55,30 @@ function secret(request, response){
 ////////////////////////
 
 //POST results
-function postResults(request, response){
-	console.log('results hit');
-    db.Result.create(req.body, function(error, result){
-      res.json(result);
-      console.log(result);
-    })
-}
+// function postResults(request, response){
+// 	console.log('results hit');
+//     db.Result.create(req.body, function(error, result){
+//       res.json(result);
+//       console.log(result);
+//     })
+// }
 
 
 //PUT results
-function putResults(request, response){
-	console.log('results hit');
-	db.Result.update(req.body, function(error, result){
-		console.log(result)
-		res.json(result);
-	})
-}
+// function putResults(request, response){
+// 	console.log('results hit');
+// 	db.Result.update(req.body, function(error, result){
+// 		console.log(result)
+// 		res.json(result);
+// 	})
+// }
 
 
 
 
 module.exports = {
-  putResults: putResults,
-  postResults: postResults,
+  //putResults: putResults,
+  //postResults: postResults,
   getLogin: getLogin,
   postLogin: postLogin,
   getSignup: getSignup,

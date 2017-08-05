@@ -39,7 +39,7 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
         postTime: currentTime     //adds current-time timestamp
       },
       success: function(){
-        console.log('successful ajax');
+        console.log('ajax POST success');
       }
     })
 })
@@ -52,47 +52,71 @@ $('#showHistory').on('click', function(data){ //gets results from db for display
     let allResults = data;
     console.log(allResults);
     console.log(allResults.length);
-    allResults.forEach(function(result){
-      renderResults(result);//triggers all results to render to page
+    renderResults(allResults);//triggers all results to render to page
     });
   });
-});
 
-function renderResults(result){ //renders all past results in HTML
-  var historyHtml= 
-  "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
-  + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> </a>" ;
+
+function renderResults(allResults){ //renders all past results in HTML
+  $('#history').html('');
+  $.get("http://localhost:3000/api/results")
+    .done(function(data){  
+    let allResults = data;
+    allResults.forEach(function(result){
+    historyHtml=
+    "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
+    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> </a>" ;
   
-  $('#history').append(historyHtml)
-
-}
+    $('#history').append(historyHtml)
+    })
+  });
+};
 
 
 //______________________add comment to 'result' object___________//
-var commentBox;
 
-$('#history').on('click', '#commentButton', function(event){ //renders modal on page
+$('#history').on('click', '#commentButton', function(event){ //renders comment modal on page
   console.log("comment button clicked");
   var byId= $(this).parents('.oneResult').data('result-id');
   console.log(byId);
+  $('#commentModal').data(byId);
   $('#commentModal').modal();
   console.log("comment modal front-end");
   
   
-  $('#saveComment').on('click', function(event){
-  console.log('saveComment clicked');
-  commentBox = $('#resultComment').val();
-  var commentUrl = "http://localhost:3000/api/results/"+ byId + "";
-  console.log(commentUrl)
-  $.ajax({
-    method: "PUT",
-    url: commentUrl,
-    comment: commentBox
-})
-console.log(commentBox);
+    $('#saveComment').on('click', function(event){
+    console.log('saveComment clicked');
+    var commentBox = $('#resultComment').val();
+    var clickedUrl = "http://localhost:3000/api/results/"+ byId + "";
+    console.log(clickedUrl)
+      $.ajax({
+        method: "PUT",
+        url: clickedUrl,
+        data:{
+          comment: commentBox
+        }
+      })
+  console.log(commentBox);
+    });
+});
 
-  })
-})
+//_________________delete result object______________//
+
+$('#history').on('click', '#deleteResultButton', function(event){
+      console.log('deleteResultButton clicked')
+      var byId= $(this).parents('.oneResult').data('result-id');
+      console.log(byId);
+      var clickedUrl = "http://localhost:3000/api/results/"+ byId + "";
+        $.ajax({
+          method: "DELETE",
+          url: clickedUrl,
+          success: function(results){
+            console.log("ajax DELETE success!");
+            renderResults(results)
+          }
+        })
+});
+
 
 
 /////////////////////////////

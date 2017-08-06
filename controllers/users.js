@@ -49,7 +49,7 @@ function secret(request, response){
 
 ////////////////////////
 //                    //
-//  **MY FUNCTIONS**  //
+//  **FUNCTIONS**     //
 //                    //
 //                    //
 ////////////////////////

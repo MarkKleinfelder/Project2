@@ -11,6 +11,22 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
 
+  // app.all('*', function(req, res, next) {
+  //   res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
+  //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  //   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  //   res.header('Access-Control-Allow-Headers', 'Authorization');
+  //   res.header('Access-Control-Allow-Headers', 'Basic');
+  //   if ('OPTIONS' == req.method) {
+  //   res.sendStatus(200);
+  //   } else {
+  //     next();
+  //   }
+  // });
+
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -33,7 +49,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(session({ secret: 'THIS IS THE APP' })); 
+app.use(session({ secret: "THIS IS MARK KLEINFELDER'S APP" })); 
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 
@@ -61,7 +77,7 @@ app.use(routes);
 
 /***********WATSON CLIENT LIBRARY**************/
 
-var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+//var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 // var tone_analyzer = new ToneAnalyzerV3({
 //   username: '{b9219ac2-92c6-4752-9c7d-5baf887b2199}',
 //   password: '{iMlAST68Iyqk}',
@@ -162,6 +178,9 @@ app.delete('/api/results/:id', function(req,res){
 		};
 	});
 });
+
+
+
 
 
 

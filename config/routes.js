@@ -14,7 +14,7 @@ function authenticatedUser(req, res, next) {
   // Otherwise the request is redirected home page
   res.redirect('/');}
 
-router.route("/secret")
+router.route("/toneanalyzer")
   .get(authenticatedUser, usersController.secret)
 
 router.route('/')

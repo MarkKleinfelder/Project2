@@ -154,6 +154,29 @@ $('#history').on('click', '#reRenderButton', function(event){
 //                         //
 /////////////////////////////
 
+var submitApiText = function(){
+var textToCheck = $('textToSubmit').val();
+
+
+// $.ajax({
+//   url: "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&tones=emotion",
+//   beforeSend: function(xhr){
+//     xhr.setRequestHeader("Authorization", "Basic" +("b9219ac2-92c6-4752-9c7d-5baf887b2199 : iMlAST68Iyqk"));
+//   },
+//   method: "POST",
+//   contentType:'application/json',
+//   data: textToCheck,
+//   success: function (data){
+//     console.log("api ajax success " + data)
+//   },
+//   error: function(){
+//     console.log("could not get data");
+//   }
+// })
+
+}
+
+
 
 var submitText = function(){
 	console.log("Text to submit: " + $("#textToSubmit").val())

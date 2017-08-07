@@ -10,22 +10,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var twit         = require ('twit');
-mongoose.connect( process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE" );
-  // app.all('*', function(req, res, next) {
-  //   res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
-  //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  //   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  //   res.header('Access-Control-Allow-Headers', 'Authorization');
-  //   res.header('Access-Control-Allow-Headers', 'Basic');
-  //   if ('OPTIONS' == req.method) {
-  //   res.sendStatus(200);
-  //   } else {
-  //     next();
-  //   }
-  // });
 
 
+app.use(bodyParser.urlencoded());
 
+app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -184,23 +173,6 @@ app.delete('/api/results/:id', function(req,res){
 
 
 
-// app.get('/', function homepage(req, res) {
-//   res.sendFile(__dirname + '/views/index.html');
-// });
-
-// app.get("https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?text="+$("#textToSubmit").val()+"&sentences=true&version=2016-05-19", function(req,res){
-//     console.log(res.body);
-//   })
-
-
-// const apiUrl = "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&sentences=false";
-
-// request(apiUrl function(error, response, body){
-// 	console.log(json.parse(body));
-// })
-
-
-
 
 
 
@@ -212,5 +184,5 @@ app.delete('/api/results/:id', function(req,res){
 
 //listen on port 3000
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Express server is up and running on http://localhost:3000/');
+  console.log('server running');
 });

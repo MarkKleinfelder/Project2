@@ -1,23 +1,20 @@
 var express = require('express');
 var router = express.Router();
-// Parses information from POST
 var bodyParser = require('body-parser');
-// Used to manipulate POST methods
 var methodOverride = require('method-override');
 var passport = require("passport");
 var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
-mongoose.connect( process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE" );
 
 
 function authenticatedUser(req, res, next) {
-   // If the user is authenticated, continue the execution
+   // If the user is authenticated, continue
   if (req.isAuthenticated()) return next();
-  // Otherwise the request is redirected home page
+  // If not the request is redirected home page
   res.redirect('/');}
 
 router.route("/toneanalyzer")
-  .get(authenticatedUser, usersController.secret)
+  .get(authenticatedUser, usersController.toneAnalyzer)
 
 router.route('/')
   .get(staticsController.home);

@@ -1,3 +1,4 @@
+var twit         = require ('twit');
 ////////////////////////////
 //                        //
 //   **FRONT END JS.**    //
@@ -157,6 +158,16 @@ $('#history').on('click', '#reRenderButton', function(event){
 var submitApiText = function(){
 var textToCheck = $('textToSubmit').val();
 
+$.ajax({
+  method: "GET",
+   beforeSend: function(xhr){
+     xhr.setRequestHeader("Authorization", "Basic" +("xRcBjUF4nWK9bNSZV6GYIuxsY : iMlAST68Iyqk"));
+   },
+  url: "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_%20name=WhiteHouse&count=25",
+  success: function(data){
+    console.log("return from twitter success")
+  }
+})
 
 // $.ajax({
 //   url: "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&tones=emotion",

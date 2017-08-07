@@ -9,8 +9,8 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-
-
+var twit         = require ('twit');
+mongoose.connect( process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE" );
   // app.all('*', function(req, res, next) {
   //   res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
   //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

@@ -9,7 +9,7 @@ function getSignup(request, response) {
 function postSignup(request, response, next) {
 	//Signup new user
 	let signupStrategy = passport.authenticate('local-signup', { //must be same as 'passport-use' in passport.js!!!
-		successRedirect: '/',
+		successRedirect: '/toneanalyzer',
 		failureRedirect: '/signup',
 		failureFlash: true
 	});
@@ -26,7 +26,7 @@ function getLogin(request, response) {
 // POST login 
 function postLogin(request, response, next) {
 		let loginStrategy = passport.authenticate('local-login', { //must be same as 'passport-use' in passport.js!!!
-		successRedirect: '/',
+		successRedirect: '/toneanalyzer',
 		failureRedirect: '/login',
 		failureFlash: true
 	});

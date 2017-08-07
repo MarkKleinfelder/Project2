@@ -40,7 +40,7 @@
     </div>
     <div class="row row3">
       <div class='col-sm-12'>
-        <p>or, if you prefer, enter some text below for analyzation!</p>
+        <p>Enter a Twitter user name or any text below for analyzation!</p>
       </div>
     </div>
     <div class="row row4">
@@ -49,16 +49,16 @@
         <input class = "form-control input-lg" id = "textToSubmit" type='text'>
       </div>
     <div class="row row5">
-      <button type="button" onclick=submitText() class="btn-warning">Check This Text</button>
-      <button type='button' onclick=submitApiText() class="btn-danger">Check API</button>
+      <button type="button" onclick=submitText() class="btn-warning btnCheckTxt">Check This Text</button>
+      <button type='button' onclick=submitApiText() class="btn-danger btnCheckTwit">Check Twitter</button>
     </div>
       <div class="chart" id="chartContainer" style="height: 30em; width: 80%;">
     </div>
     <div class="row row6">
-      <button type='button' id='saveResults' class='btn-danger'>Save My Results</button>
+      <button type='button' id='saveResults' class='btn-danger btnSave'>Save My Results</button>
     </div>
     <div>
-      <button type = 'button' id='showHistory' class='btn-primary'>See Past Results</button>
+      <button type = 'button' id='showHistory' class='btn-primary btnSee'>See Past Results</button>
     </div>
     
 <!--____________RESULTS HISTORY RENDER AREA______________-->
@@ -72,22 +72,23 @@
         <div class='modal-content'>
           <div class='modal-header'>
             <button type='button' class='close' data-dismiss='modal' area-label="Close"><span aria-hidden='true'>&times;</span></button>
-            <h3 class='modal-title'>Comments</h3>
+            <h3 class='modalTitle modal-title'>Comments</h3>
           </div>
           <div class='modal-body'>
             <fieldset class="from-horizontal">
               <div class="form-group">
-                <label class='col-md-4'>Comment</label>
-                <div class='col-md-4'>
+               <!--  <label class='modalComment col-md-4'>Comment</label> -->
+                <div class='col-md-10 col-md-offset-1'>
                 <!---_______text input___________-->
-                <input id='resultComment' name='resultComment' type='text' placeholder='add a comment' class='form-control input-md'>
+                <input id='resultComment' name='resultComment' type='text' placeholder='add a comment' class='form-control input-lg'>
                 </div>
               </div>
             </fieldset>
           </div>
         <div class='model-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-          <button type='button' class='btn btn-primary' id='saveComment'>Save Comment</button>
+          <button type='button' class='btn btn-primary btnSave' id='saveComment'>Save Comment</button>
+
+          <button type='button' class='btn btn-default btnClose' data-dismiss='modal'>Close</button>
         </div>
       </div>
     </div>

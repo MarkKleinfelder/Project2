@@ -1,8 +1,32 @@
 body{
-
+	background-color: lightgrey;
+	font-family: "Gruppo";
 }
+
+button{
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.btnCheckTxt{
+	margin:10px;
+}
+
+.btnCheckTwit{
+	margin: 10px;
+}
+
+.btnSee{
+	margin-bottom:15px;
+}
+
+.btnSave{
+	margin-bottom:15px;
+}
+
 .container{
-	background-color: lightblue;
+	background-color:;
+
 }
 .title{
 	font-family: "Shrikhand", sans-serif;
@@ -13,7 +37,7 @@ body{
 
 .row1{
 	/*background-image: url("images/wheel.jpg");*/
-	background: ;
+	
 	
 }
 .row2{
@@ -52,4 +76,91 @@ body{
 
 .canvasjs-chart-credit {
    display: none;
+}
+
+/*-------------list and modal-------------------------------------*/
+.btnList{
+	margin:10px;
+}
+
+.btnAdd{
+	background-color: #8edb93;
+	color:black;
+}
+
+.btnRemove{
+	background-color: #ff7070;
+}
+
+.btnReRender{
+	background-color: #fbff99;
+}
+
+.modalTitle{
+	font-size: 30px;
+
+}
+
+.modalComment{
+	font-size:20px;
+}
+
+.btnClose{
+	margin-bottom:30px;
+	font-size: 20px;
+	margin-left:5px;
+}
+
+.btnSave{
+	margin-bottom:30px;
+	font-size: 20px;
+	margin-right:5px;
+}
+
+.list-group-item{
+	background-color: lightgrey;
+}
+
+/*-------------index and partial styles------------------*/
+
+.rowA{
+	margin-top: 30px;
+	padding-top: 10px;
+	text-align: center;
+	font-family:"Gruppo";
+	background: white;
+	border-radius: 10px
+}
+
+.welcome{
+	font-size: 55px;
+}
+
+.navbar{   /*-----width of page----*/
+	background-color:grey;
+	text-align: center;
+}
+
+.navCon{             /*----centered around nav text, has margins l and r--*/
+	background-color: grey;
+	text-align: center;
+
+}
+
+.navbar-default .navbar-nav>li>a{  /*--nav bar, width of text content, changes text style--*/
+	color:white;
+	font-family:"Gruppo";
+	font-size: 20px;
+	margin:auto;
+}
+
+.navbar-nav{    /*-----surrounds nav text only*/
+	
+}
+
+
+.indexP{
+	font-size:20px;
+	padding-top: 10px;
+	padding-bottom: 35px;
 }

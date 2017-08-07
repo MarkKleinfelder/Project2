@@ -67,7 +67,7 @@ function renderResults(allResults){ //renders results history in HTML
     allResults.forEach(function(result){
     historyHtml=
     "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
-    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger'>Remove Result</button> <button class='bt-default' id='reRenderButton'>Re-Render</button></a>" ;
+    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary btnAdd btnList'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger btnRemove btnList'>Remove Result</button> <button class='bt-default btnReRender btnList' id='reRenderButton'>Re-Render</button></a>" ;
   
     $('#history').append(historyHtml)
     })
@@ -195,8 +195,7 @@ var submitText = function(){
 
 function graphResults() {
     var chart = new CanvasJS.Chart("chartContainer",
-    	
-    {
+      {
       backgroundColor: "transparent",
       title:{
         text: "Emotions"    
@@ -212,7 +211,7 @@ function graphResults() {
         verticalAlign: "bottom",
         horizontalAlign: "center"
       },
-
+     
       
 
       theme: "theme2",
@@ -220,7 +219,7 @@ function graphResults() {
 
       {        
         type: "column",  
-        showInLegend: true, 
+        showInLegend: false, 
         // legendMarkerColor: "grey",
         // legendText: "MMbbl = one million barrels",
         dataPoints: [      

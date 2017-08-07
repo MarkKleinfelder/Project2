@@ -323,8 +323,11 @@
     "xdg-basedir": "^3.0.0",
     "yaeti": "^1.0.1"
   },
-  "optionalDependencies":{
-        "fsevents": "^1.1.2"
-
+  "optionalDependencies": {
+    "fsevents": "^1.1.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
   }
 }

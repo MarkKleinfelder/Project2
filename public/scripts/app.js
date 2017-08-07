@@ -1,4 +1,4 @@
-var twit         = require ('twit');
+//var twit         = require ('twit');
 ////////////////////////////
 //                        //
 //   **FRONT END JS.**    //

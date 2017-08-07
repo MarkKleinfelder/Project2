@@ -106,7 +106,6 @@
     "fresh": "^0.5.0",
     "from": "^0.1.7",
     "fs.realpath": "^1.0.0",
-    "fsevents": "^1.1.2",
     "fstream": "^1.0.11",
     "fstream-ignore": "^1.0.5",
     "gauge": "^2.7.4",
@@ -323,5 +322,9 @@
     "write-file-atomic": "^2.1.0",
     "xdg-basedir": "^3.0.0",
     "yaeti": "^1.0.1"
+  },
+  "optionalDependencies":{
+        "fsevents": "^1.1.2"
+
   }
 }

@@ -5,6 +5,7 @@ var methodOverride = require('method-override');
 var passport = require("passport");
 var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
+var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
 
 function authenticatedUser(req, res, next) {
@@ -15,6 +16,7 @@ function authenticatedUser(req, res, next) {
 
 router.route("/toneanalyzer")
   .get(authenticatedUser, usersController.toneAnalyzer)
+  .get(usersController.submitApiText)
 
 router.route('/')
   .get(staticsController.home);
@@ -37,6 +39,7 @@ router.route("/logout")
 //  **ROUTES**      //
 //                  //
 //////////////////////
+
 
 //router.route("/secret")
   //.post(usersController.postResults) 

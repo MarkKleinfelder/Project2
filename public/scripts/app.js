@@ -6,6 +6,7 @@
 ////////////////////////////
 
 
+
 // ************ GLOBAL VARIABLES *********** //
 
 
@@ -155,23 +156,7 @@ $('#history').on('click', '#reRenderButton', function(event){
 //                         //
 /////////////////////////////
 
-var submitApiText = function(){
-var textToCheck = $('textToSubmit').val();
 
-$.ajax({
-  method: "GET",
-   beforeSend: function(xhr){
-     xhr.setRequestHeader("Authorization", "Basic" +("xRcBjUF4nWK9bNSZV6GYIuxsY : iMlAST68Iyqk"));
-   },
-  url: "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_%20name=WhiteHouse&count=25",
-  success: function(data){
-    console.log("return from twitter success")
-  }
-})
-
-
-
-}
 
 
 
@@ -236,36 +221,8 @@ function graphResults() {
 }
 
 
-// $.ajax({
-//   url: "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&tones=emotion",
-//   beforeSend: function(xhr){
-//     xhr.setRequestHeader("Authorization", "Basic" +("b9219ac2-92c6-4752-9c7d-5baf887b2199 : iMlAST68Iyqk"));
-//   },
-//   method: "POST",
-//   contentType:'application/json',
-//   data: textToCheck,
-//   success: function (data){
-//     console.log("api ajax success " + data)
-//   },
-//   error: function(){
-//     console.log("could not get data");
-//   }
-// })
 
-// var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-// var tone_analyzer = new ToneAnalyzerV3({
-//   username: '{b9219ac2-92c6-4752-9c7d-5baf887b2199}',
-//   password: '{iMlAST68Iyqk}',
-//   version_date: '{2016-05-19}'
-// });
 
-//  var submitText =tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' },
-//   function(err, tone) {
-//     if (err)
-//       console.log(err);
-//     else
-//       console.log(JSON.stringify(tone, null, 2));
-// });
 
 
 

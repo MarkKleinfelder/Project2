@@ -1,4 +1,6 @@
-var passport = require("passport") //required passport.js 
+var passport = require("passport"); 
+var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+var watson         = require('watson-developer-cloud');
 
 // GET signup 
 function getSignup(request, response) {
@@ -54,24 +56,24 @@ function toneAnalyzer(request, response){
 //                    //
 ////////////////////////
 
-//POST results
-// function postResults(request, response){
-// 	console.log('results hit');
-//     db.Result.create(req.body, function(error, result){
-//       res.json(result);
-//       console.log(result);
-//     })
-// }
 
+var tone_analyzer = new ToneAnalyzerV3({
+  username: 'b9219ac2-92c6-4752-9c7d-5baf887b2199',
+  password: 'iMlAST68Iyqk',
+  version_date: '2016-05-19'
+});
 
-//PUT results
-// function putResults(request, response){
-// 	console.log('results hit');
-// 	db.Result.update(req.body, function(error, result){
-// 		console.log(result)
-// 		res.json(result);
-// 	})
-// }
+function submitApiText (request, response){
+	console.log("hit submitApiText");
+tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' }, function(err, tone) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('tone endpoint:');
+    console.log(JSON.stringify(tone, null, 2));
+  };
+});
+};
 
 
 
@@ -79,6 +81,7 @@ function toneAnalyzer(request, response){
 module.exports = {
   //putResults: putResults,
   //postResults: postResults,
+  submitApiText: submitApiText,
   getLogin: getLogin,
   postLogin: postLogin,
   getSignup: getSignup,

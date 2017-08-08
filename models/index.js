@@ -8,6 +8,6 @@ mongoose.connect( process.env.MONGODB_URI); //||
 
 
 
-
+module.exports.tone_analyzer = require("./toneApi.js");
 module.exports.User = require("./user.js");
 module.exports.Result = require("./results.js");

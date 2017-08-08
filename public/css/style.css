@@ -101,8 +101,20 @@ button{
 
 }
 
+.modal{
+	background-color: rgba(0,100,60,.2);
+}
 .modalComment{
 	font-size:20px;
+}
+
+.modal-content{
+	background-color: rgba(255,255,255,.9);
+}
+
+.oneResult{
+	border:none;
+
 }
 
 .btnClose{

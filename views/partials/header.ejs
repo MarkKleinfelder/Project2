@@ -3,20 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>WELCOME!</title>
-    
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-
     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
-
-
   <meta name="viewport"  content="width = device-width, initial-scale = 1">
   </head>
   <body class='newbod'>
     <nav class="navbar navbar-default">
       <div class="container navCon">
-
+      <i class="fa fa-bar-chart" style="font-size:24px"></i>
       <ul class="nav navbar-nav navUl">
     <li><a href="/toneanalyzer">Tone Analyzer</a></li>
   <% if (currentUser) {%>
@@ -24,10 +20,9 @@
   <% } else { %>
     <li><a class="navA" href="/login">Login</a></li>
     <li><a class="navA" href="/signup">Signup</a></li> 
+
   <% } %>
 </ul>
-        
-     
      </div> <!-- /.container-fluid -->
      </nav>
 

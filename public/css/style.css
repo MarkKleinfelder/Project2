@@ -3,6 +3,28 @@ body{
 	font-family: "Gruppo";
 }
 
+.rowSave{
+	
+}
+
+#msg{
+	position: absolute;
+	display:none;
+	z-index: 99;
+
+	
+
+	
+}
+
+.saved{
+	font-family:"Shrikhand";
+	font-size: 45px;
+	color:green;
+	text-align: center;
+
+}
+
 button{
 	font-size: 20px;
 	margin-top: 10px;

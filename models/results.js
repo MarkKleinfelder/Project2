@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var ResultSchema = new Schema({
+		text: String,
 	    anger: Number,
 	    disgust: Number,
 	    fear: Number,

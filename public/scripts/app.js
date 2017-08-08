@@ -16,6 +16,7 @@ var disgustLevel;
 var fearLevel;
 var joyLevel;
 var sadnessLevel;
+var text;
 //----------------//
 
 var allResults; //list of objects in 'results' collection
@@ -27,12 +28,14 @@ var allResults; //list of objects in 'results' collection
 //_________________save results to results collection____________//
 $('#saveResults').on('click', function (event){ // Saves results to user db
     console.log("saveResults button clicked")
+    text = $("#textToSubmit").val();
     var currentTime = new Date().toLocaleString().split(', '); //time stamp
     var resultsUrl="http://localhost:3000/api/results"
     $.ajax({              //ajax POST to db
       method: "POST",
       url: resultsUrl,
       data: {
+        text: text,
         anger: angerLevel,
         disgust: disgustLevel,
         fear: fearLevel,
@@ -40,11 +43,17 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
         sadness: sadnessLevel,
         postTime: currentTime     //adds current-time timestamp
       },
-      success: function(){
+      success: function(results){
         console.log('ajax POST success');
-      }
-    })
-})
+        $('#msg').show();
+        setTimeout(function(){
+          $('#msg').fadeOut();
+        },3000);
+        renderResults(results);
+        }
+      });
+    
+});
 
 
 //_________get and show all objects in 'results' collection__________//
@@ -139,6 +148,7 @@ $('#history').on('click', '#reRenderButton', function(event){
     .done(function(data){
       console.log(byId);
       console.log(data);
+      text = data.text;
       angerLevel = data.anger;
       disgustLevel = data.disgust;
       fearLevel = data.fear;
@@ -162,13 +172,15 @@ $('#history').on('click', '#reRenderButton', function(event){
 
 var submitText = function(){
 	console.log("Text to submit: " + $("#textToSubmit").val())
+  submittedText= $("#textToSubmit").val()
 	$.ajax ({
 		url:"https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?text="+$("#textToSubmit").val()+"&tones=emotion&sentences=false&version=2016-05-19",
 		type: 'Get',
 		success: function(data){
 		console.log(data.document_tone.tone_categories[0].tones);
 		var tones=data.document_tone.tone_categories[0].tones;
-		angerLevel= tones[0].score * 100;
+		text = submittedText;
+    angerLevel= tones[0].score * 100;
 		disgustLevel=tones[1].score *100;
 		fearLevel = tones[2].score *100;
 		joyLevel = tones[3].score *100;
@@ -204,9 +216,9 @@ function graphResults() {
 
       {        
         type: "column",  
-        showInLegend: false, 
+        showInLegend: true, 
         // legendMarkerColor: "grey",
-        // legendText: "MMbbl = one million barrels",
+        legendText: text,
         dataPoints: [      
         {y: angerLevel, label: "Anger", color:"#e23852"},
         {y: disgustLevel,  label: "Disgust", color:"#529b56"},

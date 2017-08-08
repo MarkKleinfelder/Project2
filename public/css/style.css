@@ -132,6 +132,15 @@ button{
 	border-radius: 10px
 }
 
+.rowHead{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+h2{
+	font-size: 45px;
+	
+}
 .welcome{
 	font-size: 55px;
 }
@@ -162,5 +171,25 @@ button{
 .indexP{
 	font-size:20px;
 	padding-top: 10px;
-	padding-bottom: 35px;
+	padding-bottom: 30px;
+	margin:12px;
+}
+
+.form-group{
+	font-size:20px;
+	text-align: center;
+}
+
+.rowText{
+	text-align: center;
+}
+
+.rowSubBtn{
+	text-align: center;
+}
+
+.textInput{
+	text-align: center;
+	width:100%;
+	font-size: 25px;
 }

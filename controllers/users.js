@@ -2,6 +2,15 @@ var passport = require("passport");
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var watson         = require('watson-developer-cloud');
 
+////////////////////////
+//                    //
+//  **FUNCTIONS**     //
+//                    //
+//                    //
+////////////////////////
+
+
+
 // GET signup 
 function getSignup(request, response) {
 	response.render('signup.ejs',{message: request.flash('signupMessage')});
@@ -49,12 +58,6 @@ function toneAnalyzer(request, response){
 	response.render('app.ejs')
 }
 
-////////////////////////
-//                    //
-//  **FUNCTIONS**     //
-//                    //
-//                    //
-////////////////////////
 
 
 var tone_analyzer = new ToneAnalyzerV3({
@@ -64,15 +67,15 @@ var tone_analyzer = new ToneAnalyzerV3({
 });
 
 function submitApiText (request, response){
-	console.log("hit submitApiText");
-tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' }, function(err, tone) {
-  if (err) {
+  console.log("hit submitApiText");
+  tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' }, function(err, tone) {
+    if (err) {
     console.log(err);
-  } else {
+    } else {
     console.log('tone endpoint:');
     console.log(JSON.stringify(tone, null, 2));
-  };
-});
+    };
+  });
 };
 
 

@@ -16,7 +16,7 @@ function authenticatedUser(req, res, next) {
 
 router.route("/toneanalyzer")
   .get(authenticatedUser, usersController.toneAnalyzer)
-  .get(usersController.submitApiText)
+  .post(usersController.submitApiText);
 
 router.route('/')
   .get(staticsController.home);
@@ -32,17 +32,5 @@ router.route('/login')
 router.route("/logout")
   .get(usersController.getLogout)
 
-
-//////////////////////
-//                  //
-//                  //
-//  **ROUTES**      //
-//                  //
-//////////////////////
-
-
-//router.route("/secret")
-  //.post(usersController.postResults) 
-  //.put(usersController.putResults)
 
 module.exports = router

@@ -13,11 +13,11 @@ var twit         = require ('twit');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var watson       = require('watson-developer-cloud');
 
-app.use(bodyParser.urlencoded());
+//app.use(bodyParser.urlencoded());
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 /////////////////////////
@@ -32,7 +32,8 @@ mongoose.connect('mongodb://localhost/project2');
 
 app.use(morgan('dev')); 
 app.use(cookieParser());
-app.use(bodyParser()); 
+//app.use(bodyParser()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', './views');
 app.engine('ejs', require('ejs').renderFile);
@@ -40,7 +41,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-//app.use(session({ secret: "THIS IS MARK KLEINFELDER'S APP" })); 
+app.use(session({ secret: "this is marks app" })); 
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 

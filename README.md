@@ -17,10 +17,10 @@ Technologies Used:<br>
 • Bootstrap CSS<br>
 
 
-The app can be found here: 
+The app can be found here:<br>
 <a href="https://quiet-shore-93946.herokuapp.com/" target="_blank">Tone Analyzer</a>
 
-<img src="https://github.com/MarkKleinfelder/Project2/blob/master/Project%202%20Wireframe.pdf">
+<img src="https://github.com/MarkKleinfelder/Project2/blob/master/Project%202%20Wireframe.jpg">
 
 ***************  CURRENT ISSUES!  ********************
 

@@ -4,7 +4,9 @@ For this project I am using IBM's Watson API. While this api offers a wide range
 
 This project will include a secure login for visitors to the site. Once logged in, they will be able to access the tone analyzer, save their results, add comments to each saved entry, and re-render the saved results. To use the tone analyzer, the user will simply enter text into the provided text box and submit it to the Tone Analyzer api. The api responds with numbers corresponding to various catagories of emotions, these results are then rendered in an easily readable graph. At this point the results can be saved to the database, commented on, and re-rendered. 
 
-API used:
+
+
+API used:<br>
 • IBM's Watson Tonal Analyzer
 
 
@@ -17,11 +19,11 @@ Technologies Used:<br>
 
 The app can be seen here: 
 
-https://quiet-shore-93946.herokuapp.com/
+<a href="https://quiet-shore-93946.herokuapp.com/" target="_blank">Tone Analyzer</a>
 
-
+<img href="https://github.com/MarkKleinfelder/Project2/blob/master/Project%202%20Wireframe.pdf">
 
 ***************  CURRENT ISSUES!  ********************
 
-• App not working with Heroku
+• App not working with Heroku<br>
 

@@ -86,7 +86,10 @@ app.get('/api/users', function user_index(req, res){
  });
 });
 
-//______________get all results____________//
+
+//______________GET results from API_________//
+
+//______________INDEX all results____________//
 app.get('/api/results', function results_index(req, res){
   db.Result.find({},function(error, results){
     console.log(results);
@@ -94,7 +97,7 @@ app.get('/api/results', function results_index(req, res){
  });
 });
 
-//_______________get results by id_________//
+//_______________SHOW results by id_________//
 app.get('/api/results/:id', function(req,res){
   db.Result.findOne({ _id:req.params.id
 	}, function(err,result){
@@ -102,7 +105,7 @@ app.get('/api/results/:id', function(req,res){
   })
 })
 
-//____________create NEW result object____//
+//____________CREATE result object____//
 app.post('/api/results', function(req,res){
     console.log('hit results');
 	db.Result.create(req.body, function(error, result){
@@ -111,7 +114,7 @@ app.post('/api/results', function(req,res){
 	});
 });
 
-//_______update result with comment__//
+//_______UPDATE result by id with comment__//
 app.put('/api/results/:id', function(req,res){
 	console.log("PUT hit");
 	console.log(req.params.id);
@@ -127,7 +130,7 @@ app.put('/api/results/:id', function(req,res){
     });
 
  
-//______________delete result by id_____//
+//______________DELETE result by id_____//
 app.delete('/api/results/:id', function(req,res){
 	console.log("DELETE hit");
 	console.log(req.params.id);

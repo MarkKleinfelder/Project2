@@ -20,12 +20,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-
+/////////////////////////
 /////////////////////////
 //                     //
 // **PASSPORT BELOW**  //
 //                     //
-/////////////////////////                  
+///////////////////////// 
+/////////////////////////
 
 mongoose.connect('mongodb://localhost/project2'); 
 

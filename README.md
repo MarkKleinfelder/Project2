@@ -8,11 +8,11 @@ API used:
 • IBM's Watson Tonal Analyzer
 
 
-Technologies Used:
-• Mongo Database
-• Mocha / Chai Testing
-• Express routing
-• Bootstrap CSS
+Technologies Used:<br>
+• Mongo Database<br>
+• Mocha / Chai Testing<br>
+• Express routing<br>
+• Bootstrap CSS<br>
 
 
 The app can be seen here: 

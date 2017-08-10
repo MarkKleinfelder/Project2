@@ -30,7 +30,7 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
     console.log("saveResults button clicked")
     text = $("#textToSubmit").val();
     var currentTime = new Date().toLocaleString().split(', '); //time stamp
-    var resultsUrl="https://localhost:3000/api/results"
+    var resultsUrl="localhost:3000/api/results"
     $.ajax({              //ajax POST to db
       method: "POST",
       url: resultsUrl,
@@ -58,7 +58,7 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
 
 //_________get and show all objects in 'results' collection__________//
 $('#showHistory').on('click', function(data){ //gets results from db for display
- $.get("https://localhost:3000/api/results")//***changed all http, to https
+ $.get("localhost:3000/api/results")//***changed all http, to https
     .done(function(data){  
     let allResults = data;
     console.log(allResults);
@@ -71,7 +71,7 @@ $('#showHistory').on('click', function(data){ //gets results from db for display
 function renderResults(allResults){ //renders results history in HTML
   console.log('renderResults function  hit');
   $('#history').html('');
-  $.get("https://localhost:3000/api/results")
+  $.get("localhost:3000/api/results")
     .done(function(data){  
     let allResults = data;
     allResults.forEach(function(result){
@@ -94,7 +94,7 @@ $('#history').on('click', '#commentButton', function(event){ //renders comment m
   $('#commentModal').data(byId);
   $('#commentModal').modal();
   console.log("comment modal front-end");
-  $.get("https://localhost:3000/api/results/"+byId+"") //get comment text from db
+  $.get("localhost:3000/api/results/"+byId+"") //get comment text from db
     .done(function(data){
       console.log(data);
       console.log(data.comment)
@@ -105,7 +105,7 @@ $('#history').on('click', '#commentButton', function(event){ //renders comment m
     $('#commentModal').on('click','#saveComment', function(event){  //saves comment to db
     console.log('saveComment clicked');
     var commentBox = $('#resultComment').val();
-    var clickedUrl = "https://localhost:3000/api/results/"+ byId + "";
+    var clickedUrl = "localhost:3000/api/results/"+ byId + "";
     console.log(clickedUrl)
       $.ajax({
         method: "PUT",
@@ -130,7 +130,7 @@ $('#history').on('click', '#deleteResultButton', function(event){
       console.log('deleteResultButton clicked')
       var byId= $(this).parents('.oneResult').data('result-id');
       console.log(byId);
-      var clickedUrl = "https://localhost:3000/api/results/"+ byId + "";
+      var clickedUrl = "localhost:3000/api/results/"+ byId + "";
         $.ajax({
           method: "DELETE",
           url: clickedUrl,
@@ -144,7 +144,7 @@ $('#history').on('click', '#deleteResultButton', function(event){
 //_________________re-GRAPH result __________________//
 $('#history').on('click', '#reRenderButton', function(event){
   var byId= $(this).parents('.oneResult').data('result-id');
-  $.get("https://localhost:3000/api/results/"+byId+"") 
+  $.get("localhost:3000/api/results/"+byId+"") 
     .done(function(data){
       console.log(byId);
       console.log(data);

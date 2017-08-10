@@ -30,7 +30,7 @@ $('#saveResults').on('click', function (event){ // Saves results to user db
     console.log("saveResults button clicked")
     text = $("#textToSubmit").val();
     var currentTime = new Date().toLocaleString().split(', '); //time stamp
-    var resultsUrl="http://localhost:3000/api/results"
+    var resultsUrl="https://localhost:3000/api/results"
     $.ajax({              //ajax POST to db
       method: "POST",
       url: resultsUrl,

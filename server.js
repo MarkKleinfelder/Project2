@@ -28,7 +28,7 @@ var watson       = require('watson-developer-cloud');
 ///////////////////////// 
 /////////////////////////
 
-mongoose.connect('mongodb://localhost/project2' || process.env.MONGODB_URI); 
+//mongoose.connect('mongodb://localhost/project2' || process.env.MONGODB_URI); 
 
 app.use(morgan('dev')); 
 app.use(cookieParser());

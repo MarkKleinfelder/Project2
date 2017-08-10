@@ -28,7 +28,7 @@ var watson       = require('watson-developer-cloud');
 ///////////////////////// 
 /////////////////////////
 
-mongoose.connect('mongodb://localhost/project2'); 
+mongoose.connect('mongodb://localhost/project2' || process.env.MONGODB_URI); 
 
 app.use(morgan('dev')); 
 app.use(cookieParser());
@@ -88,6 +88,9 @@ app.get('/api/users', function user_index(req, res){
 
 
 //______________GET results from API_________//
+
+
+
 
 //______________INDEX all results____________//
 app.get('/api/results', function results_index(req, res){

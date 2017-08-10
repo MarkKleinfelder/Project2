@@ -1,0 +1,18 @@
+body{
+	background-color: lightblue;
+	text-align: center;
+}
+
+nav{
+	background-color: lightgrey;
+}
+.p1{
+	margin:auto;
+	width:90%;
+}
+
+.graph{
+	margin-top: 20px;
+	background-color: lightyellow;
+	height: 22em;
+}

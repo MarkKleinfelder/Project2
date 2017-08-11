@@ -20,7 +20,6 @@ The app can be found here:<br>
 
 <img src="https://github.com/MarkKleinfelder/Project2/blob/master/Project%202%20Wireframe.jpg">
 
-***************  CURRENT ISSUES!  ********************
 
-• App not working with Heroku<br>
+
 

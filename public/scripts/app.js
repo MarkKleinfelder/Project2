@@ -142,7 +142,7 @@ $('#history').on('click', '#deleteResultButton', function(event){
 });
 
 //_________________re-GRAPH result __________________//
-$('#history').on('click', '#reRenderButton', function(event){
+$('#history').on('click', '#reLoadButton', function(event){
   var byId= $(this).parents('.oneResult').data('result-id');
   $.get("/api/results/"+byId+"") 
     .done(function(data){

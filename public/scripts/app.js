@@ -79,7 +79,7 @@ function renderResults(allResults){ //renders results history in HTML
     "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
     + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary btnAdd btnList'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger btnRemove btnList'>Remove Result</button> <button class='bt-default btnReLoad btnList' id='reLoadButton'>Re-Render</button></a> <p>"+result.text+" </p>"
   
-    $('#r').append(historyHtml)
+    $('#history').append(historyHtml)
     })
   });
 };

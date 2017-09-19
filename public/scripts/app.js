@@ -77,9 +77,9 @@ function renderResults(allResults){ //renders results history in HTML
     allResults.forEach(function(result){
     historyHtml=
     "<a href='#' class='list-group-item oneResult' data-result-id='" + result._id + "'>" 
-    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary btnAdd btnList'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger btnRemove btnList'>Remove Result</button> <button class='bt-default btnReRender btnList' id='reRenderButton'>Re-Render</button></a> <p>"+result.text+" </p>;"
+    + result.postTime[0] + " " + "<button type='button' id='commentButton' class='btn-primary btnAdd btnList'>Add Comment</button> <button type='button' id='deleteResultButton' class='btn-danger btnRemove btnList'>Remove Result</button> <button class='bt-default btnReLoad btnList' id='reLoadButton'>Re-Render</button></a> <p>"+result.text+" </p>"
   
-    $('#history').append(historyHtml)
+    $('#r').append(historyHtml)
     })
   });
 };

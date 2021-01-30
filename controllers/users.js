@@ -58,6 +58,19 @@ function toneAnalyzer(request, response){
 	response.render('app.ejs')
 }
 
+// new method
+// const toneAnalyzer = new ToneAnalyzerV3({
+//   version: '{version}',
+//   authenticator: new IamAuthenticator({
+//     apikey: '{apikey}',
+//   }),
+//   serviceUrl: '{url}',
+//   headers: {
+//     'X-Watson-Learning-Opt-Out': 'true'
+//   }
+// });
+
+
 
 
 var tone_analyzer = new ToneAnalyzerV3({

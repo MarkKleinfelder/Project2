@@ -1,4 +1,6 @@
 //var twit         = require ('twit');
+
+
 ////////////////////////////
 //                        //
 //   **FRONT END JS.**    //
@@ -168,26 +170,43 @@ $('#history').on('click', '#reLoadButton', function(event){
 
 
 
+text = 'Team, I know that times are tough! Product '
+  + 'sales have been disappointing for the past three '
+  + 'quarters. We have a competitive product, but we '
+  + 'need to do a better job of selling it!';
+
+const toneParams = {
+  toneInput: { 'text': text },
+  contentType: 'application/json',
+};
 
 
 var submitText = function(){
 	console.log("Text to submit: " + $("#textToSubmit").val())
   submittedText= $("#textToSubmit").val()
-	$.ajax ({
-		url:"https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?text="+$("#textToSubmit").val()+"&tones=emotion&sentences=false&version=2016-05-19",
-		type: 'Get',
-		success: function(data){
-		console.log(data.document_tone.tone_categories[0].tones);
-		var tones=data.document_tone.tone_categories[0].tones;
-		text = submittedText;
-    angerLevel= tones[0].score * 100;
-		disgustLevel=tones[1].score *100;
-		fearLevel = tones[2].score *100;
-		joyLevel = tones[3].score *100;
-		sadnessLevel = tones[4].score *100;
-		graphResults();
-	  }
-  })
+  $.get('/api/tone')
+    .done(function(data){
+      console.log('submit text data ---------', data)
+    })
+  
+  // , text, function(result){
+  //   console.log('submitText result-----------------', result)
+  // })
+	// $.ajax ({
+	// 	url:"https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?text="+$("#textToSubmit").val()+"&tones=emotion&sentences=false&version=2016-05-19",
+	// 	type: 'Get',
+	// 	success: function(data){
+	// 	console.log(data.document_tone.tone_categories[0].tones);
+	// 	var tones=data.document_tone.tone_categories[0].tones;
+	// 	text = submittedText;
+  //   angerLevel= tones[0].score * 100;
+	// 	disgustLevel=tones[1].score *100;
+	// 	fearLevel = tones[2].score *100;
+	// 	joyLevel = tones[3].score *100;
+	// 	sadnessLevel = tones[4].score *100;
+	// 	graphResults();
+	//   }
+  // })
 }
 
 function graphResults() {

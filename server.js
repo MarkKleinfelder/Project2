@@ -161,14 +161,15 @@ app.delete('/api/results/:id', function(req,res){
 //   }
 // });
 
-const text = 'Team, I know that times are tough! Product '
-  + 'sales have been disappointing for the past three '
-  + 'quarters. We have a competitive product, but we '
-  + 'need to do a better job of selling it!';
+// const text = 'Team, I know that times are tough! '
+// Product '
+//   + 'sales have been disappointing for the past three '
+//   + 'quarters. We have a competitive product, but we '
+//   + 'need to do a better job of selling it!';
 
 
 const toneAnalyzer = new ToneAnalyzerV3({
-  version: '2017-09-21',
+  version: '2016-05-19',
   authenticator: new IamAuthenticator({
     apikey: '-5AVVCPcTzCgostyM-A-EbS5eF7Vq9cdsm7fbOvfd91V',
   }),
@@ -184,10 +185,7 @@ const toneAnalyzer = new ToneAnalyzerV3({
 //   version_date: '2016-05-19'
 // });
 
-const toneParams = {
-  toneInput: { 'text': text },
-  contentType: 'application/json',
-};
+
 
 // app.get('/api/tone'), function(req,res){
 //   console.log('hit server.js with req', req);
@@ -200,11 +198,16 @@ const toneParams = {
 //   });
 // }
 
-app.get('/api/tone', function getTone(req, res){
-  console.log('hit server.js with req2');
+app.post('/api/tone', (req, res) => {
+  const toneParams = {
+    toneInput: { 'text': req.body.text },
+    contentType: 'application/json',
+  };
+  console.log('hit server.js with req2', req.body);
   toneAnalyzer.tone(toneParams)
   .then(toneAnalysis => {
     console.log(JSON.stringify(toneAnalysis, null, 2));
+    res.json(toneAnalysis)
   })
   .catch(err => {
     console.log('error:', err);

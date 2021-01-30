@@ -16,7 +16,7 @@ function authenticatedUser(req, res, next) {
 
 router.route("/toneanalyzer")
   .get(authenticatedUser, usersController.toneAnalyzer)
-  .post(usersController.submitApiText);
+  // .post(usersController.submitApiText);
 
 router.route('/')
   .get(staticsController.home);

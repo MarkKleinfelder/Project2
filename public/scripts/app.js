@@ -170,24 +170,34 @@ $('#history').on('click', '#reLoadButton', function(event){
 
 
 
-text = 'Team, I know that times are tough! Product '
-  + 'sales have been disappointing for the past three '
-  + 'quarters. We have a competitive product, but we '
-  + 'need to do a better job of selling it!';
-
-const toneParams = {
-  toneInput: { 'text': text },
-  contentType: 'application/json',
-};
+// text = $("#textToSubmit").val();
 
 
 var submitText = function(){
 	console.log("Text to submit: " + $("#textToSubmit").val())
-  submittedText= $("#textToSubmit").val()
-  $.get('/api/tone')
-    .done(function(data){
-      console.log('submit text data ---------', data)
-    })
+  submittedText= $("#textToSubmit").val();
+  $.post('/api/tone', {'text': submittedText}, function(data, status){
+    console.log('submit Test data ---------', data + status)
+    const tones = data.result.document_tone.tone_categories[0].tones;
+    text = submittedText;
+    angerLevel = tones[0].score * 100;
+    disgustLevel = tones[1].score * 100;
+    fearLevel = tones[2].score * 100;
+    joyLevel =  tones[3].score * 100;
+    saddnessLevel = tones[4].score * 100;
+    graphResults()
+  })
+    // .done(function(data){
+    //   // console.log('submit text data ---------', data.document_tone)
+    //   const tones = data.result.document_tone.tone_categories[0].tones;
+    //   text = submittedText;
+    //   angerLevel = tones[0].score * 100;
+    //   disgustLevel = tones[1].score * 100;
+    //   fearLevel = tones[2].score * 100;
+    //   joyLevel =  tones[3].score * 100;
+    //   saddnessLevel = tones[4].score * 100;
+    //   graphResults()
+    // })
   
   // , text, function(result){
   //   console.log('submitText result-----------------', result)

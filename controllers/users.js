@@ -58,41 +58,6 @@ function toneAnalyzer(request, response){
 	response.render('app.ejs')
 }
 
-// new method
-// const toneAnalyzer = new ToneAnalyzerV3({
-//   version: '{version}',
-//   authenticator: new IamAuthenticator({
-//     apikey: '{apikey}',
-//   }),
-//   serviceUrl: '{url}',
-//   headers: {
-//     'X-Watson-Learning-Opt-Out': 'true'
-//   }
-// });
-
-
-
-
-// var tone_analyzer = new ToneAnalyzerV3({
-//   username: 'b9219ac2-92c6-4752-9c7d-5baf887b2199',
-//   password: 'iMlAST68Iyqk',
-//   version_date: '2016-05-19'
-// });
-
-// function submitApiText (request, response){
-//   console.log("hit submitApiText");
-//   tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' }, function(err, tone) {
-//     if (err) {
-//     console.log(err);
-//     } else {
-//     console.log('tone endpoint:');
-//     console.log(JSON.stringify(tone, null, 2));
-//     };
-//   });
-// };
-
-
-
 
 module.exports = {
   //putResults: putResults,

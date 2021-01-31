@@ -1,4 +1,5 @@
 
+require('dotenv').config()
 var request      = require('request');
 var express      = require('express');
 var app          = express();
@@ -148,55 +149,16 @@ app.delete('/api/results/:id', function(req,res){
 	});
 });
 
-// new
-
-// const toneAnalyzer = new ToneAnalyzerV3({
-//   version: '2017-09-21',
-//   authenticator: new IamAuthenticator({
-//     apikey: '-5AVVCPcTzCgostyM-A-EbS5eF7Vq9cdsm7fbOvfd91V',
-//   }),
-//   serviceUrl: 'https://api.us-south.tone-analyzer.watson.cloud.ibm.com/instances/5dd551bb-a22e-4728-831d-2a0162df7ca8',
-//   headers: {
-//     'X-Watson-Learning-Opt-Out': 'true'
-//   }
-// });
-
-// const text = 'Team, I know that times are tough! '
-// Product '
-//   + 'sales have been disappointing for the past three '
-//   + 'quarters. We have a competitive product, but we '
-//   + 'need to do a better job of selling it!';
-
 
 const toneAnalyzer = new ToneAnalyzerV3({
   version: '2016-05-19',
   authenticator: new IamAuthenticator({
-    apikey: '-5AVVCPcTzCgostyM-A-EbS5eF7Vq9cdsm7fbOvfd91V',
+    apikey: process.env.WATSON_API_KEY,
   }),
   serviceUrl: 'https://api.us-south.tone-analyzer.watson.cloud.ibm.com',
   disableSslVerification: true,
 });
   
-
-
-// const tone_analyzer = new ToneAnalyzerV3({
-//   username: 'b9219ac2-92c6-4752-9c7d-5baf887b2199',
-//   password: 'iMlAST68Iyqk',
-//   version_date: '2016-05-19'
-// });
-
-
-
-// app.get('/api/tone'), function(req,res){
-//   console.log('hit server.js with req', req);
-//   toneAnalyzer.tone(toneParams)
-//   .then(toneAnalysis => {
-//     console.log(JSON.stringify(toneAnalysis, null, 2));
-//   })
-//   .catch(err => {
-//     console.log('error:', err);
-//   });
-// }
 
 app.post('/api/tone', (req, res) => {
   const toneParams = {

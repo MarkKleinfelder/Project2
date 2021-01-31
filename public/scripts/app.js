@@ -177,7 +177,6 @@ var submitText = function(){
 	console.log("Text to submit: " + $("#textToSubmit").val())
   submittedText= $("#textToSubmit").val();
   $.post('/api/tone', {'text': submittedText}, function(data, status){
-    console.log('submit Test data ---------', data + status)
     const tones = data.result.document_tone.tone_categories[0].tones;
     text = submittedText;
     angerLevel = tones[0].score * 100;
@@ -187,36 +186,6 @@ var submitText = function(){
     saddnessLevel = tones[4].score * 100;
     graphResults()
   })
-    // .done(function(data){
-    //   // console.log('submit text data ---------', data.document_tone)
-    //   const tones = data.result.document_tone.tone_categories[0].tones;
-    //   text = submittedText;
-    //   angerLevel = tones[0].score * 100;
-    //   disgustLevel = tones[1].score * 100;
-    //   fearLevel = tones[2].score * 100;
-    //   joyLevel =  tones[3].score * 100;
-    //   saddnessLevel = tones[4].score * 100;
-    //   graphResults()
-    // })
-  
-  // , text, function(result){
-  //   console.log('submitText result-----------------', result)
-  // })
-	// $.ajax ({
-	// 	url:"https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?text="+$("#textToSubmit").val()+"&tones=emotion&sentences=false&version=2016-05-19",
-	// 	type: 'Get',
-	// 	success: function(data){
-	// 	console.log(data.document_tone.tone_categories[0].tones);
-	// 	var tones=data.document_tone.tone_categories[0].tones;
-	// 	text = submittedText;
-  //   angerLevel= tones[0].score * 100;
-	// 	disgustLevel=tones[1].score *100;
-	// 	fearLevel = tones[2].score *100;
-	// 	joyLevel = tones[3].score *100;
-	// 	sadnessLevel = tones[4].score *100;
-	// 	graphResults();
-	//   }
-  // })
 }
 
 function graphResults() {

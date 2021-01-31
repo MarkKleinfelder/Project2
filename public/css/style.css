@@ -4,24 +4,33 @@ body{
 }
 
 .rowSave{
-	
+	position: relative;
+	height: 0px;
+	display: flex;
 }
 
 #msg{
-	position: absolute;
+	/* position: absolute; */
 	display:none;
-	z-index: 99;
+	z-index: 99;	
+	/* margin-left: 17%; */
+	border-radius: 8px;
+    top: 9em;
+}
 
-	
-
-	
+.saved-container {
+	/* background-color: rgba(251, 251, 251, 0.6); */
 }
 
 .saved{
 	font-family:"Shrikhand";
 	font-size: 45px;
-	color:green;
+	color:black;
 	text-align: center;
+	background-color: rgba(251, 251, 251, 0.6);
+	width: 50%;
+	margin: 0 auto;
+	border-radius: 8px;
 
 }
 
@@ -226,4 +235,15 @@ h2{
 	text-align: center;
 	width:100%;
 	font-size: 25px;
+}
+
+@media screen and (max-width: 768px) {
+
+	.saved{
+		font-size: 30px;
+	}
+
+	.saved-container {
+		width: 100%;
+	}
 }

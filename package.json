@@ -112,7 +112,7 @@
     "getpass": "^0.1.7",
     "glob": "^7.1.2",
     "glob-base": "^0.3.0",
-    "glob-parent": "^3.1.0",
+    "glob-parent": "^5.1.2",
     "got": "^7.1.0",
     "graceful-fs": "^4.1.11",
     "har-schema": "^2.0.0",

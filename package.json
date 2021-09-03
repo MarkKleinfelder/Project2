@@ -202,7 +202,7 @@
     "mongodb-core": "^2.1.14",
     "mongoose": "^4.11.6",
     "morgan": "^1.8.2",
-    "mpath": "^0.3.0",
+    "mpath": "^0.8.4",
     "mpromise": "^0.5.5",
     "mquery": "^2.3.1",
     "ms": "^2.0.0",

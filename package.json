@@ -306,7 +306,7 @@
     "typedarray-to-buffer": "^3.1.2",
     "uid-number": "0.0.6",
     "uid-safe": "^2.1.5",
-    "undefsafe": "^2.0.1",
+    "undefsafe": "^2.0.3",
     "unpipe": "^1.0.0",
     "update-notifier": "^2.2.0",
     "util-deprecate": "^1.0.2",

@@ -121,7 +121,7 @@
     "has-symbol-support-x": "^1.4.0",
     "has-to-string-tag-x": "^1.4.0",
     "has-unicode": "^2.0.1",
-    "hawk": "^6.0.2",
+    "hawk": "^9.0.1",
     "hnp": "^1.0.1",
     "hoek": "^4.2.0",
     "hooks-fixed": "^2.0.0",

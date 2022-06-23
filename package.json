@@ -113,7 +113,7 @@
     "glob": "^7.1.2",
     "glob-base": "^0.3.0",
     "glob-parent": "^3.1.0",
-    "got": "^7.1.0",
+    "got": "^11.8.5",
     "graceful-fs": "^4.1.11",
     "har-schema": "^2.0.0",
     "har-validator": "^5.0.3",

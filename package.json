@@ -200,7 +200,7 @@
     "mkdirp": "^0.5.1",
     "mongodb": "^2.2.30",
     "mongodb-core": "^2.1.14",
-    "mongoose": "^4.11.6",
+    "mongoose": "^4.13.21",
     "morgan": "^1.8.2",
     "mpath": "^0.3.0",
     "mpromise": "^0.5.5",

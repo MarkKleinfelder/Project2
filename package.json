@@ -245,7 +245,7 @@
     "proxy-addr": "^1.1.5",
     "ps-tree": "^1.1.0",
     "punycode": "^2.1.0",
-    "qs": "^6.5.0",
+    "qs": "^6.5.3",
     "random-bytes": "^1.0.0",
     "randomatic": "^1.1.7",
     "range-parser": "^1.2.0",

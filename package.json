@@ -90,7 +90,7 @@
     "event-stream": "^3.3.4",
     "expand-brackets": "^2.1.4",
     "expand-range": "^2.0.1",
-    "express": "^4.15.4",
+    "express": "^4.17.3",
     "express-session": "^1.15.5",
     "extend": "^3.0.1",
     "extglob": "^1.1.0",
